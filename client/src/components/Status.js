@@ -6,7 +6,7 @@ const Status = ({ winner, xIsNext }) => {
   if (winner) {
     status = `Winner: ${winner}`;
   } else {
-    status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+    status = `Next player: ${xIsNext ? 'YOU' : 'MACHINE'}`;
   }
   return <div>{status}</div>;
 };

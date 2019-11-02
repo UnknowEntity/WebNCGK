@@ -6,7 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import Game from './containers/GameContainer';
+import SinglePlayerGame from './containers/SinglePlayerContainer';
 import Login from './containers/LoginContainer';
 import Register from './containers/RegisterContainer';
 import rootReducer from './reducers';
@@ -22,7 +22,7 @@ ReactDOM.render(
         <Route exact path="/" component={App} />
         <Route path="/user/register" component={Register} />
         <Route path="/user/login" component={Login} />
-        <Route path="/game" component={Game} />
+        <Route path="/game/singleplayer" component={SinglePlayerGame} />
       </Switch>
     </Router>
   </Provider>,
