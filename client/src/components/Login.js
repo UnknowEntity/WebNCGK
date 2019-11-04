@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Form as ReduxForm, Control } from 'react-redux-form';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 const bootstrapFormControl = props => {
   return <Form.Control {...props} />;
@@ -14,10 +14,11 @@ const Login = ({ handleSubmit, stopRedirect, isRedirect, url }) => {
     }
     return <div />;
   };
-
+  useEffect(() => {
+    stopRedirect();
+  });
   return (
     <div className="container">
-      <div onLoad={() => stopRedirect()}></div>
       <div className="row justify-content-center">
         <div className="border border-primary p-2 col-4">
           <ReduxForm model="userFormData" onSubmit={v => handleSubmit(v)}>
@@ -43,7 +44,7 @@ const Login = ({ handleSubmit, stopRedirect, isRedirect, url }) => {
             <Button variant="primary" type="submit">
               Login
             </Button>
-            <a href="/user/login">Register</a>
+            <Link to="/user/login">Register</Link>
           </ReduxForm>
         </div>
         <div>{link(isRedirect)}</div>

@@ -12,6 +12,9 @@ const userModel = {
   },
   add(user) {
     return db.insert('user', user);
+  },
+  update: function(user) {
+    return db.update('user', user);
   }
 };
 

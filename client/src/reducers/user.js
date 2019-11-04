@@ -1,6 +1,12 @@
 const user = (
   state = {
-    data: null,
+    data: {
+      id: null,
+      username: '',
+      email: '',
+      password: '',
+      description: ''
+    },
     token: null
   },
   action

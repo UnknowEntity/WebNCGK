@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import { getAllUserData, redirectApi, stopAction } from '../actions';
-import Login from '../components/Login';
+import { getUser, redirectApi, stopAction, getProfile } from '../actions';
+import Profile from '../components/Profile';
+import { actions } from 'react-redux-form';
 
 const mapStateToProps = state => {
   const { api } = state;
@@ -13,21 +14,20 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   handleSubmit: data => {
     console.log(data);
-    fetch(`/user/login`, {
+    fetch(`/user/update`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email: data.email,
-        password: data.password
+        data
       }),
       redirect: 'follow'
     })
       .then(res => res.json())
       .then(res => {
         console.log(res);
-        dispatch(getAllUserData({ data: res.user, token: res.token }));
+        dispatch(getUser({ user: data.user }));
         dispatch(redirectApi('/'));
       })
       .catch(error => {
@@ -36,10 +36,16 @@ const mapDispatchToProps = dispatch => ({
   },
   stopRedirect: () => {
     dispatch(stopAction());
+  },
+  onLoad: () => {
+    dispatch(getProfile());
+  },
+  Cancel: () => {
+    dispatch(actions.reset('userFormData'));
   }
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login);
+)(Profile);

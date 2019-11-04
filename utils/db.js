@@ -35,5 +35,22 @@ module.exports = {
       });
       connection.end();
     });
+  },
+  update: (tableName, obj) => {
+    return new Promise((resolve, reject) => {
+      var connection = createConnection();
+      connection.connect();
+
+      var id = obj.id;
+      delete obj.id;
+      console.log(id);
+      var sql = `update ${tableName} set ? where id = ?`;
+
+      connection.query(sql, [obj, id], (error, results, fields) => {
+        if (error) reject(error);
+        resolve(results.changedRows);
+      });
+      connection.end();
+    });
   }
 };

@@ -1,3 +1,5 @@
+import { actions } from 'react-redux-form';
+
 export const getUser = data => ({
   type: 'UPDATE_DATA',
   data
@@ -21,3 +23,12 @@ export const getAllUserData = user => ({
   type: 'UPDATE_ALL',
   user
 });
+
+export const getProfile = () => {
+  return (dispatch, getState) => {
+    const state = getState();
+    const { user } = state;
+    console.log(state);
+    dispatch(actions.merge('userFormData', user.data));
+  };
+};

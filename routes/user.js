@@ -46,5 +46,18 @@ router.post('/register', (req, res, next) => {
     })
     .catch(next);
 });
+router.post('/update', (req, res, next) => {
+  console.log(req.body);
+
+  // eslint-disable-next-line no-console
+  //console.log(entity);
+  usermodel
+    .update(req.body.data)
+    // eslint-disable-next-line no-unused-vars
+    .then(n => {
+      res.json({ user: res.user });
+    })
+    .catch(next);
+});
 
 module.exports = router;

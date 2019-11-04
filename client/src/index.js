@@ -11,7 +11,8 @@ import Login from './containers/LoginContainer';
 import Register from './containers/RegisterContainer';
 import rootReducer from './reducers';
 import thunk from 'redux-thunk';
-import App from './App';
+import App from './containers/AppContainer';
+import Profile from './containers/ProfileContainer';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
@@ -23,6 +24,7 @@ ReactDOM.render(
         <Route path="/user/register" component={Register} />
         <Route path="/user/login" component={Login} />
         <Route path="/game/singleplayer" component={SinglePlayerGame} />
+        <Route path="/user/profile" component={Profile} />
       </Switch>
     </Router>
   </Provider>,

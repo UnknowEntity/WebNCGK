@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Form as ReduxForm, Control } from 'react-redux-form';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 const bootstrapFormControl = props => {
   return <Form.Control {...props} />;
@@ -50,7 +50,7 @@ const Register = ({ isRedirect, url, handleSubmit }) => {
             <Button variant="primary" type="submit">
               Login
             </Button>
-            <a href="/user/login">Register</a>
+            <Link to="/user/login">Register</Link>
           </ReduxForm>
         </div>
         {link(isRedirect)}

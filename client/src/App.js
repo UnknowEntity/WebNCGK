@@ -1,43 +1,73 @@
 import React from 'react';
 import './App.css';
+import { Link } from 'react-router-dom';
 
-function App() {
+function App(id) {
+  let Id = id.id;
+  console.log(id);
+  let Disable = () => {
+    if (Id) {
+      return (
+        <Link
+          className="App-link btn btn-success text-light font-weight-bold btn-lg text-uppercase"
+          to="/game/multiplayer"
+        >
+          MultiPlayer
+        </Link>
+      );
+    } else {
+      return null;
+    }
+  };
+  let IsLogin = () => {
+    if (Id) {
+      return (
+        <div className="col HeaderBtn">
+          <Link
+            className="App-link btn btn-outline-success font-weight-bold"
+            to="/user/profile"
+          >
+            Profile
+          </Link>
+        </div>
+      );
+    } else {
+      return (
+        <div className="col HeaderBtn">
+          <Link
+            className="App-link btn btn-outline-success font-weight-bold"
+            to="/user/register"
+          >
+            Register
+          </Link>
+          <Link
+            className="App-link btn btn-success text-light font-weight-bold"
+            to="/user/Login"
+          >
+            Login
+          </Link>
+        </div>
+      );
+    }
+  };
   return (
     <div className="App container row">
-      <div className="col HeaderBtn">
-        <a
-          className="App-link btn btn-outline-success font-weight-bold"
-          href="/user/register"
-        >
-          Register
-        </a>
-        <a
-          className="App-link btn btn-success text-light font-weight-bold"
-          href="/user/Login"
-        >
-          Login
-        </a>
-      </div>
+      <IsLogin />
       <div className="w-100" />
       <div className="App-header col">
         <h1 className="text-uppercase font-weight-bold">tic tac toe</h1>
       </div>
       <div className="w-100" />
       <div className="col-12 PlayBtn">
-        <a
+        <Link
           className="App-link btn btn-success text-light font-weight-bold btn-lg"
-          href="/game/singleplayer"
+          to="/game/singleplayer"
         >
           Single Player
-        </a>
+        </Link>
       </div>
       <div className="col-12 PlayBtn">
-        <a
-          className="App-link btn btn-success text-light font-weight-bold btn-lg text-uppercase"
-          href="/game/multiplayer"
-        >
-          MultiPlayer
-        </a>
+        <Disable />
       </div>
     </div>
   );
