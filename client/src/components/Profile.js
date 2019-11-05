@@ -30,7 +30,7 @@ const Profile = ({
     stopRedirect();
     onLoad();
   });
-  const link = isRedirect => {
+  const link = () => {
     if (isRedirect) {
       return <Redirect to={url} />;
     }
@@ -103,7 +103,7 @@ const Profile = ({
           </ReduxForm>
         </div>
       </div>
-      <div>{link(isRedirect)}</div>
+      <div>{link()}</div>
     </div>
   );
 };

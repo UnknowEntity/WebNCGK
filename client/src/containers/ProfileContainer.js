@@ -1,5 +1,10 @@
 import { connect } from 'react-redux';
-import { getUser, redirectApi, stopAction, getProfile } from '../actions';
+import {
+  postStuffProtected,
+  stopAction,
+  getProfile,
+  getStuffProtected
+} from '../actions';
 import Profile from '../components/Profile';
 import { actions } from 'react-redux-form';
 
@@ -14,31 +19,13 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   handleSubmit: data => {
     console.log(data);
-    fetch(`/user/update`, {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        data
-      }),
-      redirect: 'follow'
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res);
-        dispatch(getUser({ user: data.user }));
-        dispatch(redirectApi('/'));
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    dispatch(postStuffProtected(data, '/user/update', '/'));
   },
   stopRedirect: () => {
     dispatch(stopAction());
   },
   onLoad: () => {
-    dispatch(getProfile());
+    dispatch(getStuffProtected('/user/info', getProfile));
   },
   Cancel: () => {
     dispatch(actions.reset('userFormData'));

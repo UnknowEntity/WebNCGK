@@ -24,7 +24,15 @@ router.post('/login', (req, res, next) => {
       console.log(user);
       const token = jwt.sign(JSON.stringify(user[0]), 'your_jwt_secret');
 
-      return res.json({ user: user[0], token });
+      return res.json({
+        user: {
+          id: user[0].id,
+          username: '',
+          email: '',
+          description: ''
+        },
+        token
+      });
     });
   })(req, res);
 });
@@ -46,18 +54,32 @@ router.post('/register', (req, res, next) => {
     })
     .catch(next);
 });
-router.post('/update', (req, res, next) => {
-  console.log(req.body);
+router.post(
+  '/update',
+  passport.authenticate('jwt', { session: false }),
+  (req, res, next) => {
+    console.log(req.body);
 
-  // eslint-disable-next-line no-console
-  //console.log(entity);
-  usermodel
-    .update(req.body.data)
-    // eslint-disable-next-line no-unused-vars
-    .then(n => {
-      res.json({ user: res.user });
-    })
-    .catch(next);
-});
+    // eslint-disable-next-line no-console
+    //console.log(entity);
+    usermodel
+      .update(req.body.data)
+      // eslint-disable-next-line no-unused-vars
+      .then(n => {
+        res.status(200);
+      })
+      .catch(next);
+  }
+);
+
+router.get(
+  '/info',
+  passport.authenticate('jwt', { session: false }),
+  (req, res, next) => {
+    // eslint-disable-next-line no-console
+    //console.log(entity);
+    res.json({ data: req.user[0] });
+  }
+);
 
 module.exports = router;

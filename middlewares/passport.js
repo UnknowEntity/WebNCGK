@@ -33,13 +33,15 @@ passport.use(
     {
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
       //jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken('jwt'),
-      secretOrKey: 'your_jwt_secret'
+      secretOrKey: 'your_jwt_secret',
+      passReqToCallback: true
     },
-    async function(jwtPayload, done) {
+    async function(req, jwtPayload, done) {
       //find the user in db if needed
       try {
         const user = await UserModel.findOneById(jwtPayload.id);
         if (user) {
+          req.user = user;
           return done(null, user);
         }
         return done(null, false);

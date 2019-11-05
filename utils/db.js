@@ -13,6 +13,7 @@ const createConnection = () => {
 module.exports = {
   load: sql => {
     return new Promise((resolve, reject) => {
+      console.log(sql);
       const connection = createConnection();
       connection.connect();
       // eslint-disable-next-line no-unused-vars
