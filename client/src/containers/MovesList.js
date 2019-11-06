@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updateStepNumber, updateNextPlayer } from '../actions';
+import { updateStepNumber, updateNextPlayer, aIClick } from '../actions';
 import Moves from '../components/Moves';
 
 const mapStateToProps = state => ({
@@ -10,7 +10,12 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onClick: move => {
-    dispatch(updateStepNumber(move));
+    if (move % 2 === 0) {
+      dispatch(updateStepNumber(move));
+    } else {
+      dispatch(updateStepNumber(move));
+      dispatch(aIClick());
+    }
     dispatch(updateNextPlayer(move % 2 === 0));
   }
 });
