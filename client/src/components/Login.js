@@ -44,7 +44,7 @@ const Login = ({ handleSubmit, stopRedirect, isRedirect, url }) => {
             <Button variant="primary" type="submit">
               Login
             </Button>
-            <Link to="/user/login">Register</Link>
+            <Link to="/user/register">Register</Link>
           </ReduxForm>
         </div>
         <div>{link(isRedirect)}</div>

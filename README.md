@@ -10,38 +10,6 @@
 
 ---
 
-## Branch
-
-### master
-
-#### To run local
-
-### Host
-
-#### To use on heroku
-
-##### [Heroku link](https://dagk-1612286.herokuapp.com)
-
----
-
-## Script
-
-### npm run dev
-
-#### To run express server backend and React frontend
-
-- ##### Express: localhost:5000
-- ##### React: localhost:3000
-
----
-
-### Database
-
-- #### Script: temp.sql
-- #### Type: mysql
-
----
-
 ### Chức năng hoàn thành
 
 | STT           | Điểm  | Hoàn thành |
@@ -74,3 +42,37 @@
 ##### [Github](https://github.com/UnknowEntity/WebNCGK)
 
 ##### [Host](https://dagk-1612286.herokuapp.com)
+
+##### [Youtube](https://youtu.be/mbPMNbZ0k-c)
+
+---
+
+## Branch
+
+### master
+
+#### To run local
+
+### Host
+
+#### To use on heroku
+
+##### [Heroku link](https://dagk-1612286.herokuapp.com)
+
+---
+
+## Script
+
+### npm run dev
+
+#### To run express server backend and React frontend
+
+- ##### Express: localhost:5000
+- ##### React: localhost:3000
+
+---
+
+### Database
+
+- #### Script: temp.sql
+- #### Type: mysql
