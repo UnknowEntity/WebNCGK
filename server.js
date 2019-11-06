@@ -10,7 +10,12 @@ app.use(express.json());
 //   res.sendFile(path.join(__dirname, './client/public', 'index.html'));
 // });
 // console.log that your server is up and running
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use('/user', user);
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+});
 // create a GET route
 app.get('/game', passport.authenticate('jwt', { session: false }));
