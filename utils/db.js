@@ -1,12 +1,19 @@
 const mysql = require('mysql');
 
 const createConnection = () => {
+  // return mysql.createConnection({
+  //   host: 'localhost',
+  //   port: 3306,
+  //   user: 'root',
+  //   password: 'root',
+  //   database: 'temp'
+  // });
   return mysql.createConnection({
-    host: 'localhost',
+    host: 'www.db4free.net',
     port: 3306,
-    user: 'root',
-    password: 'root',
-    database: 'temp'
+    user: 'temp_db',
+    password: '12345678',
+    database: 'my_own_db'
   });
 };
 
